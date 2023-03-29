@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+use Kathamo\Framework\CLI\KathamoFramework;
+use Symfony\Component\Console\Application;
+
+$app = new Application();
+$app->add(new KathamoFramework());
+
+$app->run();

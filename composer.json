@@ -1,0 +1,36 @@
+{
+    "name": "codesvault/kathamo-framework",
+    "description": "Core package for Kathamo.",
+    "type": "library",
+	"version": "0.0.1",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "CodesVault",
+            "email": "codesvault@gmail.com"
+        },
+        {
+            "name": "Keramot UL Islam (AbmSourav)",
+            "email": "keramotul.islam@gmail.com"
+        }
+    ],
+	"license": "MIT",
+    "require": {
+		"php": ">=7.1"
+    },
+	"require-dev": {
+        "symfony/console": "5.4.13",
+        "symfony/filesystem": "5.4.13",
+        "symfony/finder": "5.4.11",
+        "mustache/mustache": "^2.14"
+    },
+	"scripts": {},
+	"autoload": {
+        "psr-4": {
+            "Kathamo\\Framework\\": "src/"
+        }
+    },
+	"bin": [
+        "bin/kathamo"
+    ]
+}
