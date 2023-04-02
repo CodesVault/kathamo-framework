@@ -20,7 +20,7 @@ class MakeController extends Manager
 	private function generateController()
 	{
 		$data = $this->input;
-		$data = array_merge($data, $this->getConfig());
+		$data = array_merge($data, $this->getConfig($this->root_path));
 		$controller_template = dirname(__DIR__) . '/templates/Controller_php.mustache';
 
 		$mustache = new \Mustache_Engine(array('entity_flags' => ENT_QUOTES));
@@ -39,11 +39,5 @@ class MakeController extends Manager
 		);
 		fwrite($file, $file_content);
 		fclose($file);
-	}
-
-	private function getConfig()
-	{
-		$configs = require $this->root_path . "/Configs/config.php";
-		return $configs;
 	}
 }

@@ -24,7 +24,7 @@ class MakeMiddleware extends Manager
 	private function generateMiddleware()
 	{
 		$data = $this->input;
-		$config_data = $this->getConfig();
+		$config_data = $this->getConfig($this->root_path);
 		$middware_list = $config_data['middlewares'];
 		$middleware_name = $config_data['namaspace_root'] . "\App\Controllers\Middleware\\" . $data['middleware_class_name'];
 		$middware_list[$data['middleware_key']] = $middleware_name;
@@ -73,11 +73,5 @@ class MakeMiddleware extends Manager
 
 		$filesystem = new Filesystem;
 		$filesystem->dumpFile($this->root_path . '/Configs/config.php', $file_content);
-	}
-
-	private function getConfig()
-	{
-		$configs = require $this->root_path . "/Configs/config.php";
-		return $configs;
 	}
 }
