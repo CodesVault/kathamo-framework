@@ -4,7 +4,7 @@ namespace Kathamo\Framework\CLIManager;
 
 use Symfony\Component\Filesystem\Filesystem;
 
-class MakeMiddleware
+class MakeMiddleware extends Manager
 {
 	private $input = [];
 	private $root_path;
@@ -14,9 +14,9 @@ class MakeMiddleware
 	{
 		$this->root_path = $path;
 		$this->target_path = $path . "/app/Controllers/Middleware/";
-		$this->input['middleware_class_name'] = readline(" Middleware Class Name: ");
-		$this->input['middleware_key'] = readline(" Middleware key: ");
-		$this->input['middleware_path'] = readline(" Path [app/Controllers/Middleware]: ");
+		$this->input['middleware_class_name'] = $this->input("Middleware Class Name:");
+		$this->input['middleware_key'] = $this->input("Middleware key:");
+		$this->input['middleware_path'] = $this->input("Path [app/Controllers/Middleware]:");
 
 		$this->generateMiddleware();
 	}

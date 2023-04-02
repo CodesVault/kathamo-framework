@@ -2,7 +2,7 @@
 
 namespace Kathamo\Framework\CLIManager;
 
-class MakeController
+class MakeController extends Manager
 {
 	private $input = [];
 	private $root_path;
@@ -12,8 +12,8 @@ class MakeController
 	{
 		$this->root_path = $path;
 		$this->target_path = $path . "/app/Controllers/";
-		$this->input['controller_name'] = readline(" Controller Name: ");
-		$this->input['controller_path'] = readline(" Path [app/Controllers/]: ");
+		$this->input['controller_name'] = $this->input("Controller Name:");
+		$this->input['controller_path'] = $this->input("Path [app/Controllers/]:");
 		$this->generateController();
 	}
 
