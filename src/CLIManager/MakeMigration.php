@@ -10,6 +10,6 @@ class MakeMigration extends Manager
 		$this->target_path = $path . "/Database/Migrations/";
 		$this->input['input_class_name'] = $this->input("Migration Name:");
 
-		$this->generateController('Migration_php.mustache');
+		$this->generateFile('Migration_php.mustache');
 	}
 }

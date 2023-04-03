@@ -21,7 +21,7 @@ class Manager
 		return $configs;
 	}
 
-	protected function generateController($template)
+	protected function generateFile($template)
 	{
 		$data = array_merge($this->input, $this->getConfig());
 		$controller_template = dirname(__DIR__) . "/templates/$template";

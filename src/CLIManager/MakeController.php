@@ -11,6 +11,6 @@ class MakeController extends Manager
 		$this->input['input_class_name'] = $this->input("Controller Name:");
 		$this->input['input_path'] = $this->input("Path [app/Controllers/]:");
 
-		$this->generateController('Controller_php.mustache');
+		$this->generateFile('Controller_php.mustache');
 	}
 }
