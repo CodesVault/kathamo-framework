@@ -2,10 +2,7 @@
 <?php
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-use Kathamo\Framework\CLI\KathamoFramework;
-use Symfony\Component\Console\Application;
 
-$app = new Application();
-$app->add(new KathamoFramework());
+use Kathamo\Framework\CLI\KathamoCli;
 
-$app->run();
+new KathamoCli();

@@ -24,14 +24,22 @@ class Manager
 	protected function generateFile($template)
 	{
 		$data = array_merge($this->input, $this->getConfig());
-		$controller_template = dirname(__DIR__) . "/templates/$template";
+		$data['namespace_suffix'] = "";
+		if (! empty($data['input_path'])) {
+			$data['namespace_suffix'] = "\\" . str_replace("/", "\\", $data['input_path']);
+		}
 
+		$controller_template = dirname(__DIR__) . "/templates/$template";
 		$mustache = new \Mustache_Engine(array('entity_flags' => ENT_QUOTES));
 		$file_content = $mustache->render(file_get_contents($controller_template), $data);
 
-		$controller_dir = $this->target_path;
+		$this->create($data, $file_content);
+	}
+
+	protected function create($data, $file_content)
+	{
+		$controller_dir = $this->target_path . $data['input_path'];
 		if (! empty($data['input_path']) && ! is_dir($controller_dir)) {
-			$controller_dir .= $data['input_path'];
 			mkdir($controller_dir);
 		}
 		if (is_dir($controller_dir)) {
