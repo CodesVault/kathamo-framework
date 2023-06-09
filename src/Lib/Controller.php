@@ -2,6 +2,7 @@
 
 namespace Kathamo\Framework\Lib;
 
+use Codesvault\Validator\Validator;
 use Kathamo\Framework\Lib\MiddlewareResolver;
 
 class Controller
@@ -29,5 +30,13 @@ class Controller
 	public function middleware($key)
 	{
 		return MiddlewareResolver::resolve($key);
+	}
+
+	public function validate($rules, $data = [])
+	{
+		if (! class_exists("Codesvault\Validator\Validator")) {
+			throw new \Exception('Validator class not found. Install `codesvault/validator` package.');
+		}
+		return Validator::validate($rules, $data);
 	}
 }
