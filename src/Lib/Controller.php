@@ -32,6 +32,14 @@ class Controller
 		return MiddlewareResolver::resolve($key);
 	}
 
+	/**
+	 * Validate data
+	 *
+	 * @param array $rules
+	 * @param array $data
+	 *
+	 * @return \Codesvault\Validator\ValidationEngine
+	 */
 	public function validate($rules, $data = [])
 	{
 		if (! class_exists("Codesvault\Validator\Validator")) {
