@@ -1,8 +1,8 @@
 {
     "name": "codesvault/kathamo-framework",
-    "description": "Core package for Kathamo.",
+    "description": "The core framework for Kathamo.",
     "type": "library",
-	"version": "0.0.1",
+	"version": "1.0.0",
     "minimum-stability": "stable",
     "authors": [
         {
