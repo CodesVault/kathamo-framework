@@ -8,6 +8,7 @@ class BootManager
 
 	public function __construct()
 	{
+		$this->migration();
 		$this->run();
 	}
 
@@ -46,4 +47,23 @@ class BootManager
 	 */
 	protected function setRegisterList()
 	{}
+
+	/**
+	 * Load migration files.
+	 *
+	 * @return void
+	 */
+	protected function migration()
+	{
+		$migration_dir = dirname(__FILE__, 6) . "/database/Migrations";
+		if (! is_dir($migration_dir)) {
+			return;
+		}
+
+		foreach (new \DirectoryIterator($migration_dir) as $file) {
+			if (! $file->isDot() && 'php' === $file->getExtension()) {
+				require_once($file->getPathname());
+			}
+		}
+	}
 }
